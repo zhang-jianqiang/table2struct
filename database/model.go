@@ -14,6 +14,7 @@ type Model struct {
 	Dbname string
 	PackageName string
 	Dir string
+	TableName string
 }
 
 type DescResult struct {
@@ -30,9 +31,9 @@ func InitDb(m *Model) {
 	if m.Username == "" {
 		log.Fatalln("Username 不能为空")
 	}
-	if m.Password == "" {
-		log.Fatalln("Password 不能为空")
-	}
+	// if m.Password == "" {
+	// 	log.Fatalln("Password 不能为空")
+	// }
 	if m.Url == "" {
 		log.Fatalln("Url 不能为空")
 	}

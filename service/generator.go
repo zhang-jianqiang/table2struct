@@ -24,11 +24,16 @@ func NewGenerator(model *database.Model) *generator {
 }
 
 func (g *generator) CreateStruct() {
-	fmt.Print("请输入表名并回车：")
-	fmt.Scanln(&tableName)
-	if tableName == "" {
-		log.Fatalf("表名不能为空")
+	if m.TableName == "" {
+		fmt.Print("请输入表名并回车：")
+		fmt.Scanln(&tableName)
+		if tableName == "" {
+			log.Fatalf("表名不能为空")
+		}
+	} else {
+		tableName = m.TableName
 	}
+
 	// 获取表信息
 	tableDesc := m.GetTablesInfo(tableName)
 	structStr := createStructTemplate(tableDesc)
